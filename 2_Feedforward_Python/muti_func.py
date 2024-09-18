@@ -29,7 +29,7 @@ class ConstantInitializer(Initializer):
         self.bias = bias
 
     def init_weights(self, n_in, n_out):
-       return [[Var(self.weight) for _ in range(n_out)] for _ in range(n_in)]
+        return [[Var(self.weight) for _ in range(n_out)] for _ in range(n_in)]
 
     def init_bias(self, n_out):
         return [Var(self.bias) for _ in range(n_out)]
@@ -79,7 +79,7 @@ class Var:
         return Var(self.v if self.v > 0.0 else 0.0, lambda: [(self, 1.0 if self.v > 0.0 else 0.0)])
 
     def identity(self):
-        return Var(self.v, lambda: [(self, self.v)])
+        return Var(self.v, lambda: [(self, 1)])
 
     def tanh(self):
         v = math.tanh(self.v)
