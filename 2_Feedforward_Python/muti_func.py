@@ -210,10 +210,10 @@ class NormLayer:
         
 def fitting_test(EPOCHS = 100, LEARN_R_List = [[1000,1e-3]],train_batch_data=[],validation_data=[[],[]],test_data=[],need_print=True):
     NN = [
-        DenseLayer_Glorot_tanh(1, 64),
-        DenseLayer(64, 32, lambda x: x.tanh(),norm=True),
-        DenseLayer(32, 8, lambda x: x.tanh(),norm=True),
-        DenseLayer(8, 1, lambda x: x.identity(),norm=False)
+        DenseLayer_He_relu(1, 32),
+        DenseLayer(32, 16, lambda x: x.relu(), norm=True),
+        DenseLayer(16, 8, lambda x: x.relu(), norm=True),
+        DenseLayer(8, 1, lambda x: x.identity(), norm=False)
     ]
 
     x_validation,y_validation = validation_data
